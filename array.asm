@@ -5,8 +5,8 @@ segment .data
 
 segment .text
 global make_Array
-global get_at_index
-global change_index
+global get
+global change
 extern ExitProcess
 extern malloc
 
@@ -24,7 +24,7 @@ make_Array:
 	leave
 	ret
 
-get_at_index:
+get:
 	
 	;call with (pointer to base, index)
 	push rbp 
@@ -35,15 +35,14 @@ get_at_index:
 	leave
 	ret
 	
-change_index:
+change:
 
-	;call with (pointer to base, value, index)
+	;call with (pointer to base, index, value)
 	push rbp 
 	mov rbp, rsp 
 	sub rsp, 32 
 	
-	mov QWORD[rcx +r8*4], rdx
+	mov QWORD[rcx +rdx*4], r8
 	xor rax, rax
 	leave
 	ret
-	
