@@ -1,5 +1,5 @@
 #pragma once
 
-int* make_Array(int length);
-int get(int* base_pointer, int index);
-int change(int* base_pointer, int index, int value);
+extern "C" int* make_Array(int length);
+extern "C" int get(int* base_pointer, int index);
+extern "C" void change(int* base_pointer, int index, int value);
