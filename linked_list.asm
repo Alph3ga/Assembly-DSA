@@ -109,18 +109,23 @@ get:
 	sub rsp, 32
 	
 	mov rax, rcx ;fix the loop
-	
-	jmp .find_index
-	
-.find_index:
-
-	mov rax, QWORD[rcx]
-	dec rdx
 	test rdx, rdx
 	jnz .find_index
+	leave 
+	ret
+	
+
+.find_index:
+
+	mov rax, [rax +4]
+	dec rdx
+	jnz .find_index
+	
+	mov rax, QWORD[rax]
 	
 	leave
 	ret
+	
 	
 	
 	
